@@ -1,9 +1,31 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
-
+var mongoose = require("mongoose");
+mongoose.Promise = require('bluebird');
 var flash = require("connect-flash");
 var methodOverride = require("method-override");
+var cookieParser = require('cookie-parser'),
+    passport = require('passport'),
+    cookieSession = require('cookie-session');
+
+var router = express.Router();
+
+
+app.use(passport.initialize());
+
+
+app.use(cookieSession({
+    name: 'session',
+    keys: ['SECRECT KEY'],
+    maxAge: 24 * 60 * 60 * 1000
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(cookieParser());
+
+
+
 
 
 
@@ -14,6 +36,8 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 /* Set Flash */
 app.use(flash());
+
+
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,6 +52,9 @@ app.use(function(req, res , next){
     next();
  });
 
+app.get('/', (req, res) => {
+    res.render("landing");
+})
 
       // router.get("/"......
 

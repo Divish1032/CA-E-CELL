@@ -126,7 +126,7 @@ li.menu_list:hover .front {
     font-size: 40px;
     color: #e1752c;
 }
-.second hr, .third hr, .sixth hr{
+.second hr, .third hr, .sixth hr, .fifth hr{
     margin: 20px auto;
     width: 5%;
     color: black;
@@ -255,6 +255,15 @@ li.menu_list:hover .front {
     }
     .footer p{
         font-size: 14px!important;
+    }
+    .card__icon-wrapper{
+        height: 200px;
+    }
+    .card__text-wrapper{
+        height: 200px;
+    }
+    .card{
+        height: 300px;
     }
     
 }
@@ -385,7 +394,6 @@ color: #fa8231;
     font-size: 40px;
     color: #fa8231;
     padding-top: 45px;
-    text-decoration: underline;
 }
 .fifth i{
     font-size: 30px;
@@ -474,3 +482,65 @@ margin-top: 32px;
 background-color: #fa8231;
     width: 68%;
 }
+
+
+
+.card {
+    width: 300px;
+    max-width: 380px;
+    margin: 0 auto;
+    border: 0;
+  }
+
+  .card__items {
+    box-sizing: border-box;
+    padding: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    text-align: center;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition-property: transform, background-color, color;
+    transition-property: transform, background-color, color;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+  
+
+  .card__icon {
+    font-size: 4em;
+    color: rgb(102, 101, 101);
+    font-size: 26px;
+  }
+
+  .card__icon-wrapper {
+    background-color: rgb(27, 27, 27);
+    transform: translateY(50%);
+    width: 300px;
+    z-index: 9999;
+  }
+
+  .card__text-wrapper {
+    font-size: 17px;
+    transform: translateY(-50%);
+    background-color: #fa8231;
+    width: 300px;
+    font-family: consolas;
+    z-index: 0000;
+  }
+
+  .card:hover .card__icon-wrapper {
+    transform: translateY(0%);
+    background-color: rgba(0, 0, 0, 0.568);
+  }
+
+  .card:hover .card__icon {
+    color: #fff;
+  }
+
+  .card:hover .card__text-wrapper {
+    transform: translateY(0%);
+  }
