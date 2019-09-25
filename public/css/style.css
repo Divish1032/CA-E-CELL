@@ -278,6 +278,7 @@ li.menu_list:hover .front {
         margin-top: 25px!important;
     }
     .seventh .card{
+        height: 79%!important;
         height: 16rem!important;
     }
 }
@@ -402,6 +403,7 @@ color: #fa8231;
 .fifth{
     background-color: white;
     padding-bottom: 40px;
+    margin: 0px auto;
 }
 .fifth h1{
     text-align: center;
