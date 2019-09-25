@@ -186,7 +186,8 @@ li.menu_list:hover .front {
 .third h2{
     text-align: center;
     padding-top: 55px;
-    color: white;
+    font-size: 28px;
+    color: #fa8231;
 }
 .third .row{
     margin: 20px auto;
@@ -202,7 +203,6 @@ li.menu_list:hover .front {
 .third  ul li{
     font-size: 15px;
     color: #fa8231;
-    list-style: cjk-ideographic;
     margin-left: 55px;
     font-weight: bolder;
     margin-top: 5px;
@@ -280,6 +280,9 @@ li.menu_list:hover .front {
     .seventh .card{
         height: 79%!important;
         height: 16rem!important;
+    }
+    .seventh h1, .third h2{
+        font-size: 28px;
     }
 }
 
@@ -451,10 +454,7 @@ font-size: 18px;
 color: white;
 margin: 20px auto;
 }
-.sixth ul li{
-    list-style: cjk-decimal;
-    list-style-position: inside;
-}
+
 .sixth .card2{
     padding-bottom: 40px;
 }
@@ -562,8 +562,8 @@ background-color: #fa8231;
   }
 
   .seventh {
-    padding-top: 40px;
-    padding-bottom: 45px;
+    padding-top: 95px;
+    padding-bottom: 115px;
   }
   .seventh h1{
     font-size: 45px;
@@ -576,6 +576,10 @@ background-color: #fa8231;
     font-size: 20px;
     font-weight: bold;
 
+  }
+  .seventh img{
+    padding: 20px;
+    border-bottom: 1px solid #e1752c;
   }
   .seventh .card {
       width: 12rem;
@@ -596,7 +600,13 @@ background-color: #fa8231;
     text-align: center;
     color: #fa8231;
 }
-.blackqoute-footer{
+.eighth cite{
+    color: black;
+}
+.eight .blockquote p{
+    font-size: 18px;
+}
+ .blockquote-footer{
 color: black!important;
 margin-top: 15px!important;
 }
@@ -621,4 +631,5 @@ margin-top: 15px!important;
     line-height: 75px;
     margin: -40px auto 0 auto;
   }
+
   
