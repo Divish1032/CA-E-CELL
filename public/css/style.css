@@ -244,10 +244,6 @@ li.menu_list:hover .front {
     .footer .row h5{
         font-size: 17px!important;
     }
-    .footer{
-        width: 100%!important;
-        margin: 0 auto!important;
-    }
     .footer .row a, .footer .row p{
         font-size: 14px!important;
     }
@@ -642,7 +638,6 @@ background-color: #fa8231;
 .ninth{
     background-color: white;
     margin: 65px auto;
-
     width: 60%;
 }
 
@@ -709,7 +704,6 @@ background-color: #fa8231;
     }
     .ninth{
         width: 100%;
-        margin: 0 auto;
     }
 	.ninth .stat{
 	width:7rem;
