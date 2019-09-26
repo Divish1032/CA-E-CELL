@@ -102,17 +102,11 @@ li.menu_list:hover .front {
 .social{
     margin-top: 30px;
 }
-.social a{
+.social button{
+    z-index: 999999999;
+    padding: 14px 22px;
     cursor: pointer;
-    margin-left: 18px;
-}
-.social i{
-    cursor: pointer;
-    color: white;
-}
-.social a:hover{
-    color: white!important;
-    cursor: pointer;
+    position: absolute;
 }
 
 .second{
@@ -278,8 +272,7 @@ li.menu_list:hover .front {
         margin-top: 25px!important;
     }
     .seventh .card{
-        height: 79%!important;
-        height: 16rem!important;
+        height: 17rem!important;
     }
     .seventh h1, .third h2{
         font-size: 28px;
