@@ -4,6 +4,18 @@ var User = require("../models/User")
 var passport = require("passport");
 var middleware = require('../config');
 var Ref = require('../models/referal');
+var bcrypt = require('bcryptjs');
+var nodemailer = require("nodemailer");
+
+var smtpTransport = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: "divyansh.kumar.min16@itbhu.ac.in",
+        pass: "Whysoserious@1032"
+    }
+  });
+  
+  var rand,mailOptions,host,link;
 
 router.get('/', (req, res) => {
     res.render("landing",{ user : req.user });
@@ -20,14 +32,14 @@ router.get('/dashboard', middleware.ensureAuthenticated, (req, res) => {
     }
 );
 
-  // Login Page
+// Login Page
 router.get('/users/login', middleware.forwardAuthenticated, (req, res) =>{
     res.render('login');
   } );
   
   
-  // Register Page
-  router.get('/users/register', middleware.forwardAuthenticated, (req, res) => res.render('register'));
+// Register Page
+router.get('/users/register', middleware.forwardAuthenticated, (req, res) => res.render('register'));
 
 
 
@@ -48,12 +60,14 @@ router.post('/users/register', (req, res) => {
       res.render('register', { errors, name, email, password, password2, phone, college });
     } 
     else {
+        console.log("----")
       User.findOne({ email: email }).then(user => {
         if (user) {
           errors.push({ msg: 'Email already exists' });
           res.render('register', { errors, name, email, password, password2 });
         } 
         else {
+            console.log("+++")
           var newUser = new User({ name, email, password, phone, college });
           bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -63,7 +77,7 @@ router.post('/users/register', (req, res) => {
                   req.flash('success_msg','You are now registered and can log in');
                   res.redirect('/users/login');
                 })
-                .catch(err => console.log(err));
+                .catch(err => console.log(err + "======"));
             });
           });
         }
