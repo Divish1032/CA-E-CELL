@@ -43,7 +43,7 @@ app.use(function(req, res, next) {
 
 // Routes
 app.use('/', index);
-app.use('/users', user);
+/* app.use('/users', user); */
 
 
 
