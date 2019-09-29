@@ -32,7 +32,7 @@ router.get('/users/login', middleware.forwardAuthenticated, (req, res) =>{
 
 
 // Register
-router.post('/register', (req, res) => {
+router.post('/users/register', (req, res) => {
     const { name, email, password, password2, phone, college } = req.body;
     let errors = [];
     if (password != password2) {
@@ -71,7 +71,7 @@ router.post('/register', (req, res) => {
   });
 
 // Login
-router.post('/login', (req, res, next) => {
+router.post('/users/login', (req, res, next) => {
     passport.authenticate('local', {
       successRedirect: '/dashboard',
       failureRedirect: '/users/login',
@@ -82,7 +82,6 @@ router.post('/login', (req, res, next) => {
 
 
 router.get("/logout", function(req, res) {
-    
     req.logout(); 
     req.flash('success_msg', 'You are logged out');
     res.redirect("/");
