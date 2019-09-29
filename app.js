@@ -9,7 +9,7 @@ const  auth = require('./passport');
 var app = express();
 
 // Passport Config
-/* auth(passport); */
+auth(passport);
 
 app.use(express.static(__dirname + "/public"));
 // DB Config
@@ -29,6 +29,10 @@ mongoose
     keys: ['SECRECT KEY'],
     maxAge: 24 * 60 * 60 * 1000
   }));
+
+  // Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
   app.use(cookieParser());
 
