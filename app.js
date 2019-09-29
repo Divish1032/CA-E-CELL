@@ -1,57 +1,49 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-    mongoose.Promise = require('bluebird');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var User = require("./models/User");
-var methodOverride = require("method-override");
+const express = require('express');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const flash = require('connect-flash');
+const session = require('express-session');
+var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 
 var app = express();
-var indexRoutes = require("./routes/index");
-/* Set the Public folder to server*/
+
+// Passport Config
+/* auth(passport); */
+
 app.use(express.static(__dirname + "/public"));
+// DB Config
+const db = process.env.MONGDB_URL || 'mongodb://ecell:qwerty007@ds215759.mlab.com:15759/ca-ecell';
 
-/* Set method override*/
-app.use(methodOverride("_method"));
-app.use(bodyParser.urlencoded({ extended: true }));
+// Connect to MongoDB
+mongoose
+  .connect(db);
 
-/*View Engine*/
-app.set("view engine","ejs");
+  app.set('view engine', 'ejs');
 
+  // Express body parser
+  app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://ecell:qwerty007@ds215759.mlab.com:15759/ca-ecell');
+  app.use(cookieParser());
 
+  // Connect flash
+  app.use(flash());
 
-
-
-// Passport configuration
-app.use(require("express-session")({
-    secret : "Something secret",
-    resave : false,
-    saveUninitialized : false
-}));
-
-
-app.use(passport.initialize());
-app.use(passport.session());
-// The methods are available in the passport-local-mongoose library
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-/* Define your own middleware which would run for all the routes*/
-/* In this case, the currentuser would be present for every route */
-/* Use it after the session configuration */
-app.use(function(req, res , next){
-    res.locals.currentUser = req.user;   // user = {username : xxxx,  _id : xxxx} // User would be available for all routes
-  // Both of these variables would be empty most of the times
+// Global variables
+app.use(function(req, res, next) {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
     next();
- });
+  });
 
 
+  var index = require("./routes/index")
+ // var   user  = require("./routes/users");
 
- app.use("/",indexRoutes);
+// Routes
+app.use('/', index);
+app.use('/users', user);
 
 
 
