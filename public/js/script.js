@@ -1,5 +1,7 @@
 
-
+$('.card').mouseover(function() {
+  $('.card_temp').removeClass('card_temp')
+})
 
 $(document).ready(function() {
     $('.1').click(function(e) {

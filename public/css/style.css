@@ -557,6 +557,9 @@ background-color: #fa8231;
   .card:hover .card__text-wrapper {
     transform: translateY(0%);
   }
+  .card_temp{
+    transform: translateY(0%);
+  }
 
   .seventh {
     padding-top: 95px;

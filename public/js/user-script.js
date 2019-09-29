@@ -1,11 +1,20 @@
-$('#form-login').hide();
-$(".signup-button").click(function(){
-    $("#form-login").slideUp("slow");
-    $('#form-signup').slideDown("slow");
+$('#point').hide();
+$(".point").click(function(){
+    $('.dashboard').removeClass('active');
+    $('.point').addClass('active');
+    $("#dashboard").slideUp("slow");
+    $('#point').slideDown("slow");
+
   });
-  $(".login-button").click(function(){
-    $('#form-signup').slideUp("slow");
-    $("#form-login").slideDown("slow");
+  $(".dashboard").click(function(){
+    $('.point').removeClass('active');
+    $('.dashboard').addClass('active');
+    $('#point').slideUp("slow");
+    $("#dashboard").slideDown("slow");
     
   });
 
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })

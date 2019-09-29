@@ -8,40 +8,40 @@
     <link rel="stylesheet" href="css/user.css">
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  
-    <style>
+</head>
+<style>
       
-.login .head{
-  font-size: 38px;
-  text-align: center;
-  color: #fa8231;
-  margin-top: 50px;
-}
-.login hr {
-  width: 15%;
-  color: #e66813;
-}
-
-.login .form{
-  margin-top: 26px;
-}
-.login h4{
-  text-align: center;
-}
-.login #form-login, #form-signup{
-  width: 40%;
-margin-top: 45px;
-}
-.login .needs-validation button{
-  margin-top: 25px;
-}
-
-@media (max-width: 450px)  {
-  #form-signup{
-    width: 85%;
-  }
-}
-    </style>
-  </head>
+    .login .head{
+      font-size: 38px;
+      text-align: center;
+      color: #fa8231;
+      margin-top: 50px;
+    }
+    .login hr {
+      width: 15%;
+      color: #e66813;
+    }
+    
+    .login .form{
+      margin-top: 26px;
+    }
+    .login h4{
+      text-align: center;
+    }
+    .login #form-login, #form-signup{
+      width: 40%;
+    margin-top: 45px;
+    }
+    .login .needs-validation button{
+      margin-top: 25px;
+    }
+    
+    @media (max-width: 450px)  {
+      #form-signup{
+        width: 85%;
+      }
+    }
+        </style>
 <body class="login">
 
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0b0704bd;">
@@ -59,16 +59,23 @@ margin-top: 45px;
   </div>
 </nav>
 <% include ./partials/messages %>
-
-
         <h1 class="head">Join The Community</h1>
         <hr>
         
-        <div class="container" id="form-login">
-                <h4>Log In</h4>
-                <form class="needs-validation" method="POST" action="/users/login" novalidate>
+        
+        <div class="container" id="form-signup">
+            <a href="/users/login"><h5 style="margin-top: 15px;color: #fa8231;cursor: pointer;text-decoration: underline;text-align: right" class="login-button">already a member?</h5></a>
+        
+                <h4>Sign Up</h4>
+                <form class="needs-validation" method="POST" action="/users/register" novalidate>
                     <div class="form">
-                        
+                        <label for="validationCustom03">Name</label>
+                        <input type="text" class="form-control" id="validationCustom03" value="" placeholder="Enter your name" name="name" value="" required>
+                        <div class="invalid-feedback">
+                            Field cannot be empty or invalid email
+                        </div>
+                    </div>
+                    <div class="form">
                         <label for="validationCustom01">Email Address</label>
                         <input type="email" class="form-control" id="validationCustom01" value="" placeholder="Enter your email id" name="email" required>
                         <div class="invalid-feedback">
@@ -76,17 +83,37 @@ margin-top: 45px;
                         </div>
                     </div>
                     <div class="form">
-                        <label for="validationCustom01">Password</label>
+                        <label for="validationCustom02">Password</label>
                         <input type="password" class="form-control" id="validationCustom02" name="password" placeholder="password" value="" required>
+                        <div class="invalid-feedback">
+                            Field cannot be empty
+                        </div>
+                    </div>
+                    <div class="form">
+                        <label for="validationCustom07">Confiirm Password</label>
+                        <input type="password" class="form-control" id="validationCustom07" name="password2" placeholder="re-enter password" value="" required>
+                        <div class="invalid-feedback">
+                            Field cannot be empty
+                        </div>
+                    </div>
+                    <div class="form">
+                        <label for="validationCustom04">Phone Number</label>
+                        <input type="text" class="form-control" id="validationCustom04" name="phone" placeholder="Enter your personal contact number" value="" required>
+                        <div class="invalid-feedback">
+                            Field cannot be empty
+                        </div>
+                    </div>
+                    <div class="form">
+                        <label for="validationCustom05">College</label>
+                        <input type="text" class="form-control" id="validationCustom05" name="college" placeholder="Enter your collegs's name" value="" required>
                         <div class="invalid-feedback">
                             Field cannot be empty
                         </div>
                     </div>
                     <button class="btn btn-primary" type="submit">Submit form</button>
                 </form>
-                <a href="/users/register"><h5 style="text-align: right;color: #fa8231;cursor: pointer;text-decoration: underline" class="signup-button">New Member?</h5></a>
-        </div>
-        
+                </div>
+    
         <script>
                 // Example starter JavaScript for disabling form submissions if there are invalid fields
                 (function() {
@@ -106,12 +133,8 @@ margin-top: 45px;
                     });
                   }, false);
                 })();
-                
-
-
-                </script> 
+                </script>
      <script type="text/javascript" src="js/user-script.js"></script>
-     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
