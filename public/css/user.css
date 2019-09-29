@@ -1,0 +1,31 @@
+
+.login .head{
+  font-size: 38px;
+  text-align: center;
+  color: #fa8231;
+  margin-top: 50px;
+}
+.login hr {
+  width: 15%;
+  color: #e66813;
+}
+
+.login .form{
+  margin-top: 26px;
+}
+.login h4{
+  text-align: center;
+}
+.login #form-login, #form-signup{
+  width: 40%;
+margin-top: 45px;
+}
+.login .needs-validation button{
+  margin-top: 25px;
+}
+
+@media (max-width: 450px)  {
+  #form-signup{
+    width: 85%;
+  }
+}

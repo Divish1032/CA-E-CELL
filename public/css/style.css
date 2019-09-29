@@ -172,7 +172,6 @@ li.menu_list:hover .front {
 }
 
 .third{
-    max-width: 1050px;
     background-color: #000000c7;
     padding-bottom: 20px;
     margin-top: 16px;
@@ -198,6 +197,7 @@ li.menu_list:hover .front {
     font-size: 15px;
     color: #fa8231;
     margin-left: 55px;
+    list-style: lower-latin;
     font-weight: bolder;
     margin-top: 5px;
 }
