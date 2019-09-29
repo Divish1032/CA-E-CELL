@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,8 +65,12 @@
 					<h1>CAMPUS <br> AMBASSADOR <br> PROGRAM</h1>
 	
 					<div class="text-xs-center social">
-						<a href="/login"><button type="button" class="btn btn-outline-light">Login/Register</button></a>	
-	                </div>
+            <% if(!user){ %>
+            <a href="/users/login"><button type="button" class="btn btn-outline-light">Login/Register</button></a>
+            <% }else{ %>
+            <a href="/dashboard"><button type="button" class="btn btn-outline-light"><i class="fas fa-id-badge" style="margin-right: 10px"></i>Dashboard</button></a>	
+            <% } %>   
+          </div>
 			</div>
 		</div>
 
@@ -137,12 +143,12 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="card">
-							<div class="card__icon-wrapper card__items">
+							<div class="card__icon-wrapper card__items card_temp">
 								<div class="card__icon">
 								<i class="fas fa-satellite"></i> Get Certified
 								</div>
 							</div>
-							<div class="card__text-wrapper card__items">
+							<div class="card__text-wrapper card__items card_temp">
 								<p class="card__text">
 										Get a certificate of appreciation from The Entrepreneurship Cell, IIT BHU on successfully completing the tenure
 								</p>

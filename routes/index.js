@@ -2,47 +2,36 @@ var express = require("express");
 var router = express.Router();
 var User = require("../models/User")
 var passport = require("passport");
-
+var middleware = require('../config');
 
 router.get('/', (req, res) => {
-    res.render("landing");
-})
-router.get('/login', (req,res) => {
-    res.render("login")
-})
-router.get('/:id/dashboard', (req, res) => {
-    res.render("dashboard");
+    res.render("landing",{ user : req.user });
 })
 
-router.post("/login1", passport.authenticate("local",
-    {
-        successRedirect : "/",
-        failureRedirect : "/login"
-    }), function(req, res) {
-    
-});
+
+/* router.get('/dashboard', middleware.ensureAuthenticated, (req, res) => {
+    if(req.user.verified== false){
+      req.flash('error_msg', 'Please verify the email id');
+    }
+    res.render('dashboard', {
+      user: req.user
+    })
+  }
+  ); */
 
 
-  router.post('/login', function(req, res) {
-    var newUser = new User({
-        name: req.body.name,
-        username: req.body.emailid,
-        password: req.body.password,
-        college: req.body.college,
-        phone: req.body.phone
-      });
+
+  // Login Page
+router.get('/users/login', middleware.forwardAuthenticated, (req, res) =>{
+    res.render('login');
+  } );
   
-      User.register(newUser, req.body.password, function(err, user){
-        if(err){
-            console.log("error", err.message);   // Error occurs when the user is taken, password is empty etc.
-            return res.redirect("/login");  // Shortcircut everything. Else the below code would run as well and that would throw an error
-        }
-        passport.authenticate("local")(req, res, function(){
-            console.log(user.username); // 'user' is coming from database
-            res.redirect("/");
-        })
-  });
-});
+  
+  // Register Page
+  router.get('/users/register', middleware.forwardAuthenticated, (req, res) => res.render('register'));
+
+
+
 
 router.get("/logout", function(req, res) {
     console.log(req.user);
