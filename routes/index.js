@@ -144,7 +144,8 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
   })
   
   router.get('/verify', middleware.checkEmailVarification , function(req,res){
-  
+    console.log((req.protocol+"://"+req.get('host')))
+    console.log("https://"+host)
     if((req.protocol+"://"+req.get('host'))==("https://"+host))
     {
       console.log("Domain is matched. Information is from Authentic email");
