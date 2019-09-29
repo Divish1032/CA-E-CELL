@@ -5,7 +5,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
-
+const  auth = require('./passport');
 var app = express();
 
 // Passport Config
