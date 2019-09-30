@@ -120,7 +120,7 @@ router.get("/users/logout", function(req, res) {
 router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthenticated, (req, res) => {
     rand=Math.floor((Math.random() * 100) + 54);
     host=req.get('host');
-    link="http://"+req.get('host')+"/verify?id="+rand;
+    link="https://"+req.get('host')+"/verify?id="+rand;
     let mailOptions={
     from: 'divyansh.kumar.min16@itbhu.ac.in',
     to : req.user.email,
@@ -145,7 +145,7 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
   
   router.get('/verify', middleware.checkEmailVarification , function(req,res){
     console.log((req.protocol+"://"+req.get('host')))
-    console.log("http://"+host)
+    console.log("https://"+host)
     if((req.protocol+"://"+req.get('host'))==("http://"+host))
     {
       console.log("Domain is matched. Information is from Authentic email");
@@ -158,7 +158,6 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
         else{
           var codes = found.name;
           var count = found.count;
-          console.log("999999")
           User.findOneAndUpdate({email: req.user.email}, {$set:{verified:true, referal_code: codes[count]}}, (err, doc) => {
             if (err) {  
                 req.flash(
@@ -169,7 +168,6 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
         });
         Ref.findByIdAndUpdate('55d8ee52072dc4e32181ea3a9', {$set:{count:count+1}}, (err, doc) => {
           if(err){
-            console.log("ssssss")
             res.send('error occured');
           }
           else{
