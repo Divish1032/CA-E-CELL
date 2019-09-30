@@ -10,8 +10,8 @@ var nodemailer = require("nodemailer");
 var smtpTransport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "divyansh.kumar.min16@itbhu.ac.in",
-        pass: "Whysoserious@1032"
+        user: "ecell@itbhu.ac.in",
+        pass: "ECELL_IITBHU#1"
     }
   });
   
