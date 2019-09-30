@@ -7,13 +7,14 @@ var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 const  auth = require('./passport');
 var app = express();
+const keys = require('./security/keys');
 
 // Passport Config
 auth(passport);
 
 app.use(express.static(__dirname + "/public"));
 // DB Config
-const db = process.env.MONGDB_URL || 'mongodb://ecell:qwerty007@ds215759.mlab.com:15759/ca-ecell';
+const db = process.env.MONGDB_URL || keys.admin.mongoDB;
 
 // Connect to MongoDB
 mongoose

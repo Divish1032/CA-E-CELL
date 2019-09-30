@@ -6,12 +6,13 @@ var middleware = require('../config');
 var Ref = require('../models/referal');
 var bcrypt = require('bcryptjs');
 var nodemailer = require("nodemailer");
+const keys = require('../security/keys');
 
 var smtpTransport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "ecell@itbhu.ac.in",
-        pass: "ECELL_IITBHU#1"
+        user: process.env.EMAIL || keys.admin.email,
+        pass: process.env.PASSWORD  ||keys.admin.password
     }
   });
   
@@ -51,23 +52,19 @@ router.post('/users/register', (req, res) => {
     if (password != password2) {
       errors.push({ msg: 'Passwords do not match' });
     }
-  
     if (password.length < 6) {
       errors.push({ msg: 'Password must be at least 6 characters' });
     }
-  
     if (errors.length > 0) {
       res.render('register', { errors, name, email, password, password2, phone, college });
     } 
     else {
-        console.log("----")
       User.findOne({ email: email }).then(user => {
         if (user) {
           errors.push({ msg: 'Email already exists' });
           res.render('register', { errors, name, email, password, password2 });
         } 
         else {
-            console.log("+++")
           var newUser = new User({ name, email, password, phone, college });
           bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -77,7 +74,7 @@ router.post('/users/register', (req, res) => {
                   req.flash('success_msg','You are now registered and can log in');
                   res.redirect('/users/login');
                 })
-                .catch(err => console.log(err + "======"));
+                .catch(err => console.log(err));
             });
           });
         }
@@ -122,12 +119,11 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
     host=req.get('host');
     link="https://"+req.get('host')+"/verify?id="+rand;
     let mailOptions={
-    from: 'divyansh.kumar.min16@itbhu.ac.in',
+    from: keys.admin.from_email,
     to : req.user.email,
     subject : "Please confirm your Email account",
-    html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"	
+    html : "<h4 style='text-align:center'>Email Verification </h4> <br>Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"	
     }
-    console.log(mailOptions);
     smtpTransport.sendMail(mailOptions, function(error, response){
     if(error){
         console.log(error);
@@ -152,7 +148,7 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
       if(req.query.id==rand)
       {
       req.user.verified = true;
-      Ref.findById('5d8ee52072dc4e32181ea3a9', (err, found) => {
+      Ref.findById(keys.admin.referal_code_id, (err, found) => {
         if(err)res.send("error ocurred");
         else{
           var codes = found.name;
@@ -165,20 +161,16 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
                 );
             }
         });
-        Ref.findByIdAndUpdate('5d8ee52072dc4e32181ea3a9', {$set:{count:count+1}}, (err, doc) => {
+        Ref.findByIdAndUpdate(keys.admin.referal_code_id, {$set:{count:count+1}}, (err, doc) => {
           if(err){
             res.send('error occured');
           }
           else{
-            req.flash(
-              'success_msg',
-              'Your email is verified'
-            );
+            req.flash('success_msg', 'Your email is verified');
           }
         })
         }
       })
-        
       res.redirect("/");
       }
       else
