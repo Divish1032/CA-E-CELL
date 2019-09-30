@@ -180,7 +180,7 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
         }
       })
         
-        res.redirect("/dashboard", {user:req.user});
+        res.redirect("/dashboard");
       }
       else
       {
