@@ -120,7 +120,7 @@ router.get("/users/logout", function(req, res) {
 router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthenticated, (req, res) => {
     rand=Math.floor((Math.random() * 100) + 54);
     host=req.get('host');
-    link="https://"+req.get('host')+"/verify?id="+rand;
+    link="http://"+req.get('host')+"/verify?id="+rand;
     let mailOptions={
     from: 'divyansh.kumar.min16@itbhu.ac.in',
     to : req.user.email,
@@ -145,18 +145,20 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
   
   router.get('/verify', middleware.checkEmailVarification , function(req,res){
     console.log((req.protocol+"://"+req.get('host')))
-    console.log("https://"+host)
-    if((req.protocol+"://"+req.get('host'))==("https://"+host))
+    console.log("http://"+host)
+    if((req.protocol+"://"+req.get('host'))==("http://"+host))
     {
       console.log("Domain is matched. Information is from Authentic email");
       if(req.query.id==rand)
       {
       req.user.verified = true;
+      console.log("444444")
       Ref.findById('5d8ee52072dc4e32181ea3a9', (err, found) => {
         if(err)res.send("error ocurred");
         else{
           var codes = found.name;
           var count = found.count;
+          console.log("999999")
           User.findOneAndUpdate({email: req.user.email}, {$set:{verified:true, referal_code: codes[count]}}, (err, doc) => {
             if (err) {  
                 req.flash(
@@ -167,6 +169,7 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
         });
         Ref.findByIdAndUpdate('55d8ee52072dc4e32181ea3a9', {$set:{count:count+1}}, (err, doc) => {
           if(err){
+            console.log("ssssss")
             res.send('error occured');
           }
           else{
@@ -179,7 +182,7 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
         }
       })
         
-        res.redirect("/dashboard");
+        res.redirect("/dashboard", {user:req.user});
       }
       else
       {
