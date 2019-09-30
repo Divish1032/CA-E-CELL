@@ -179,7 +179,7 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
         }
       })
         
-        res.redirect("/");
+      res.redirect("/");
       }
       else
       {

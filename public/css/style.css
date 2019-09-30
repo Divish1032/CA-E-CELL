@@ -436,7 +436,7 @@ color: #fa8231;
 
 .sixth{
     background-color: rgba(0, 0, 0, 0.623);
-    width: 50%;
+    width: 84%;
     margin-top: 35px;
 }
 .sixth h1{
@@ -454,6 +454,8 @@ margin: 20px auto;
 
 .sixth .card2{
     padding-bottom: 40px;
+    width: 85%;
+margin: 0 auto; 
 }
 .sixth ul li{
     margin-top: 14px;
@@ -641,7 +643,7 @@ background-color: #fa8231;
 .ninth{
     background-color: white;
     margin: 65px auto;
-    width: 60%;
+    width: 84%;
 }
 
 
