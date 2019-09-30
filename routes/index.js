@@ -152,7 +152,6 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
       if(req.query.id==rand)
       {
       req.user.verified = true;
-      console.log("444444")
       Ref.findById('5d8ee52072dc4e32181ea3a9', (err, found) => {
         if(err)res.send("error ocurred");
         else{
@@ -180,7 +179,7 @@ router.get('/send', middleware.checkEmailVarification , middleware.ensureAuthent
         }
       })
         
-        res.redirect("/dashboard");
+        res.redirect("/");
       }
       else
       {
