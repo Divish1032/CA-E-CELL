@@ -624,6 +624,7 @@ background-color: #fa8231;
   .testimonials .card {
     border-bottom: 3px #fa82315e solid !important;
     transition: 0.5s;
+    height: 330px;
     margin-top: 60px;
     background-color: #9d45ced6!important;
     width: 239px!important;
