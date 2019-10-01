@@ -174,7 +174,7 @@ li.menu_list:hover .front {
 .third{
     background-color: #000000c7;
     padding-bottom: 20px;
-    margin-top: 16px;
+    margin-top: 50px;
 }
 .third h2{
     text-align: center;
@@ -272,31 +272,31 @@ li.menu_list:hover .front {
         margin-top: 25px!important;
     }
     .seventh .card{
-        height: 17rem!important;
+        height: auto!important;
+        margin-bottom: 25px;
     }
     .seventh h1, .third h2{
         font-size: 28px;
     }
-    .fourth figure figcaption{
+    figure figcaption{
         font-size: 1.9rem;
     }
 }
 
-.fourth figure {
-    background-color: #069;
+figure {
+    background-color: #1b566c;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
     max-width: 350px;
     max-height: 250px;
-    margin: 10px auto;
     overflow: hidden;
     position: relative;
   }
-.fourth figure img {
+figure img {
 opacity: 1;
 transition: 0.5s;
 width: 100%;
 }
-.fourth figure figcaption {
+figure figcaption {
 color: white;
 font-weight: bold;
 position: absolute;
@@ -310,7 +310,7 @@ justify-content: center;
 padding: 4rem;
 text-align: center;
 }
-.fourth figure figcaption::before, .fourth figure figcaption::after {
+figure figcaption::before, figure figcaption::after {
 content: '';
 position: absolute;
 top: 1.5rem;
@@ -319,27 +319,27 @@ bottom: 1.5rem;
 left: 1.5rem;
 transition: 0.5s;
 }
-.fourth figure figcaption::before {
+figure figcaption::before {
 border-top: 1px solid white;
 border-bottom: 1px solid white;
 -webkit-transform: scale(0, 1);
         transform: scale(0, 1);
 }
-.fourth figure figcaption::after {
+figure figcaption::after {
 border-right: 1px solid white;
 border-left: 1px solid white;
 -webkit-transform: scale(1, 0);
         transform: scale(1, 0);
 }
-.fourth figure figcaption h2 {
+figure figcaption h2 {
 -webkit-transform: translate3d(0, -20px, 0);
         transform: translate3d(0, -20px, 0);
 opacity: 0;
 transition: 0.5s;
-font-size: 22px;
+font-size: 21px;
 margin-bottom: 25px;
 }
-.fourth figure figcaption p {
+figure figcaption p {
 font-size: 1.8rem;
 letter-spacing: 1px;
 line-height: 1.618;
@@ -349,16 +349,16 @@ opacity: 0;
 transition: 0.5s;
 font-size: 15px;
 }
-.fourth figure:hover img {
+figure:hover img {
 opacity: 0.5;
 }
-.fourth figure:hover figcaption h2,
-.fourth figure:hover figcaption p {
+figure:hover figcaption h2,
+ figure:hover figcaption p {
 opacity: 1;
 -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
 }
-.fourth figure:hover figcaption::before, .fourth figure:hover figcaption::after {
+figure:hover figcaption::before, figure:hover figcaption::after {
 -webkit-transform: scale(1);
         transform: scale(1);
 }
@@ -505,6 +505,7 @@ background-color: #fa8231;
     max-width: 380px;
     margin: 0 auto;
     border: 0;
+    height: 360px;
   }
 
   .card__items {
@@ -567,6 +568,10 @@ background-color: #fa8231;
     padding-top: 95px;
     padding-bottom: 115px;
   }
+  .seventh .card-body{
+    padding: 0 18px;
+    padding-bottom: 10px;
+  }
   .seventh h1{
     font-size: 45px;
     color: #fa8231;
@@ -574,17 +579,17 @@ background-color: #fa8231;
   }
   .seventh .card p{
     color: black;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-
+    text-align: justify;
+    font-size: 16px;
+    font-weight: bolder;
   }
   .seventh img{
     padding: 20px;
     border-bottom: 1px solid #e1752c;
   }
   .seventh .card {
-      width: 12rem;
+      width: 15rem;
+      height: 25rem;
   }
   .seventh .row{
     margin-top: 50px;
