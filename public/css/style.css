@@ -256,9 +256,7 @@ li.menu_list:hover .front {
     .card__text-wrapper{
         height: 200px;
     }
-    .card{
-        height: 300px;
-    }
+    
     .testimonials .card {
         width: 239px!important;
     }
@@ -268,8 +266,8 @@ li.menu_list:hover .front {
     .blockquote-footer{
         margin-top: 10px!important;
     }
-    .seventh .row .col-md-6{
-        margin-top: 25px!important;
+    .seventh .row{
+        margin-top: 0!important;
     }
     .seventh .card{
         height: auto!important;
@@ -505,7 +503,6 @@ background-color: #fa8231;
     max-width: 380px;
     margin: 0 auto;
     border: 0;
-    height: 360px;
   }
 
   .card__items {
@@ -681,7 +678,7 @@ background-color: #fa8231;
 
 .ninth .stat{
 	width:10rem;
-	background:#344675;
+	background:#3446759e;
 	height:10rem;
 	line-height:10rem;
 	font-size:4rem;
@@ -717,9 +714,10 @@ background-color: #fa8231;
         width: 100%;
     }
 	.ninth .stat{
-	width:7rem;
-	height:7rem;
-	line-height:7rem;
+	width:auto;
+	height:auto;
+    line-height:7rem;
+    padding: 26px;
 	font-size:3rem;
 }
     .ninth .element-container{

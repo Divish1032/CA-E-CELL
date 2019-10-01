@@ -8,14 +8,14 @@ $(document).ready(function() {
       e.preventDefault();
   
       $('html, body').animate({
-        scrollTop: $('.second').offset().top
+        scrollTop: $('.fifth').offset().top
       }, 500);
     });
     $('.2').click(function(e) {
         e.preventDefault();
     
         $('html, body').animate({
-          scrollTop: $('.fourth').offset().top
+          scrollTop: $('.third').offset().top
         }, 500);
     });
     $('.3 ').click(function(e) {
