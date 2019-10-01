@@ -186,12 +186,13 @@ li.menu_list:hover .front {
     margin: 20px auto;
 }
 .third figure{
-    margin-top: 70px;
+    margin-top: 30px;
 }
 .third .row p{
     font-weight: bolder;
     font-size: 18px;
     margin-top: 20px;
+    text-align: justify;
 }
 .third  ul li{
     font-size: 15px;
